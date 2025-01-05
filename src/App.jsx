@@ -5,8 +5,13 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Navbar from "./components/Navbar.jsx";
 import Home from './components/Home';
-import About from './components/About';
+import Pages from './components/Pages';
+import Product from './components/Product';
+import Blog from './components/Blog.jsx';
+import Shop from './components/Shop.jsx';
+import Contact from './components/Contact.jsx';
 import { Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (
@@ -44,7 +49,12 @@ function App() {
       {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/Pages" element={<Pages />} />
+        <Route path="/Product" element={<Product />} />
+        <Route path="/Blog" element={<Blog />} />
+        <Route path="/Shop" element={<Shop />} />
+        <Route path="/Contact" element={<Contact />} />
+       
         
       </Routes>
     </>

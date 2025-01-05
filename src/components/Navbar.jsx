@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 const navlinks = [
   { title: "Home", url: "/" },
-  { title: "About", url: "/about" },
-  { title: "About", url: "/about" },
-  { title: "About", url: "/about" },
-  { title: "About", url: "/about" },
-  { title: "About", url: "/about" },
+  { title: "Pages", url: "/Pages" },
+  { title: "Product", url: "/Product" },
+  { title: "Blog", url: "/Blog" },
+  { title: "Shop", url: "/Shop" },
+  { title: "Contact", url: "/Contact" },
 
   // Add more links as needed
 ];
@@ -16,20 +16,23 @@ const navlinks = [
 const Navbar = () => {
   return (
     <>
-      <nav>
-        <div className="border flex justify-between items-center h-16 backdrop-blur-md sticky">
+     
+        <div className=" flex justify-between items-center h-16 backdrop-blur-md sticky bg-[#061934]  font-bold text-[#6380bb]">
           <div className="flex justify-center items-center h-10">
-            <h1>N.Ahmad</h1>
+            <h1 className="text-2xl first-letter:text-red-600">N.Ahmad</h1>
           </div>
-          {/* navigation */}
+         
           <div className="flex justify-center items-center gap-2 h-10">
-            <nav id="navbar" className="flex justify-center py-2 bg-blue-400">
+            
+             {/* navigation */}
+            <nav id="navbar" className="flex justify-center py-2  h-16  items-center">
               {navlinks.map((item, index) => {
                 return (
                   <a
                     key={index}
                     id="navitem"
-                    className="px-2 py-1 rounded-lg hover:bg-blue-600 hover:shadow-lg"
+                    className="px-2 py-1 rounded-lg  transition-all 
+                     flex justify-center items-center h-10 hover:border-b-2  hover:border-white hover:shadow-lg  "
                   >
                     <Link to={item.url}>{item.title}</Link>
                   </a>
@@ -37,12 +40,12 @@ const Navbar = () => {
               })}
             </nav>
           </div>
-          <div className="flex justify-center items-center border h-10">
+          <div className="flex justify-center items-center  h-10">
             <input type="search" className="" />
             <CiSearch className="size-5  h-6 cursor-pointer" />
           </div>
         </div>
-      </nav>
+     
     </>
   );
 };
