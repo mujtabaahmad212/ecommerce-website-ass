@@ -5,9 +5,49 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <style>
+     
+      ::-webkit-scrollbar{
+        display: none;
+      }
+      .scrolling-line-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: transparent;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    /* The actual scrolling line */
+    .scrolling-line {
+      position: absolute;
+      top: 0;
+      left: -100%; /* Start off-screen */
+      width: 100%;
+      height: 5px;
+      background-color: #3498db; /* Line color */
+      animation: scrollLine 5s linear infinite;
+    }
+
+    /* Keyframes for the animation */
+    @keyframes scrollLine {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <!-- <div class="scrolling-line"></div> -->
+   
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

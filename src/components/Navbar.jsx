@@ -32,7 +32,7 @@ const Navbar = () => {
                     key={index}
                     id="navitem"
                     className="px-2 py-1 rounded-lg  transition-all 
-                     flex justify-center items-center h-10 hover:border-b-2  hover:border-white hover:shadow-lg  "
+                     flex justify-center items-center h-10 hover:border-b-2    hover:border-[#6380bb] transition-allhover:shadow-lg  "
                   >
                     <Link to={item.url}>{item.title}</Link>
                   </a>
