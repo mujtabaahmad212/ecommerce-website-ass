@@ -48,10 +48,11 @@ const Hero = () => {
    </div>
     </div>
   </div>
+  
 </div>
 
 <h1 className="text-3xl font-bold capitalize first-letter:text-red-600 text-center my-7">Trending Products</h1>
-    
+
     </>
   )
 }
