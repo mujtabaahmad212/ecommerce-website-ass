@@ -3,20 +3,20 @@ import './App.css'
 import { CiHeart } from "react-icons/ci";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import Navbar from "./components/Navbar.jsx";
-import Home from './components/Home';
-import Pages from './components/Pages';
-import Product from './components/Product';
-import Blog from './components/Blog.jsx';
-import Shop from './components/Shop.jsx';
-import Contact from './components/Contact.jsx';
+import Navbar from "./costumComponents/Navbar.jsx";
+import Home from './costumComponents/Home.jsx';
+import Pages from './costumComponents/Pages.jsx';
+import Product from './costumComponents/Product.jsx';
+import Blog from './costumComponents/Blog.jsx';
+import Shop from './costumComponents/Shop.jsx';
+import Contact from './costumComponents/Contact.jsx';
 import { Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
     <>
-      {/* <div className="bg-purple-600 flex justify-between p-4 font-mono h-8 text-white">
+      <div className="bg-purple-600 flex justify-between p-4 font-mono h-8 text-white">
         <div className="flex justify-center items-center gap-5 ">
           <p className='flex justify-center items-center gap-2 cursor-pointer'>
             <MdEmail />user@gmail.com
@@ -41,7 +41,7 @@ function App() {
             <CiHeart className='size-5 cursor-pointer' />
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Navbar */}
       <Navbar />
