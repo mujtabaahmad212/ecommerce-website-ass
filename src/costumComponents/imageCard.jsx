@@ -80,12 +80,16 @@ const ProductList = () => {
     // Add more products here
   ]);
 
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    setCart([...cart, product]);
-  };
-
+  
+  // function handleClick() {
+  //   console.log("Button clicked!");
+  //   alert("Button was clicked!");
+  // }
+  
+  // function triggerClick() {
+  //   console.log("Triggering the click function manually.");
+  //   handleClick(); // Call the click handler function
+  // }
   return (
     <>
       <div className="">
@@ -97,7 +101,8 @@ const ProductList = () => {
               <div className="w-full flex justify-center items-center p-3 bg-[#D7D9CE] hover:bg-[#f2f2f2] transition-all  cursor-pointer duration-500 opacity-0 hover:opacity-100 h-full rounded-[10px] ">
 
             <img className=" absolute left-2  z-30 w-10 p-1 rounded-md mb-9 active:bg-yellow-600   duration-500  " src={carticon} 
-            alt="cart icon" onClick={() => addToCart(product)} />
+            alt="cart icon" />
+            
             <img className=" absolute left-2 bottom-36  z-30  w-10 p-1 rounded-md active:bg-pink-500   duration-500 " src={hearticon} 
             alt="cart icon" />
                 

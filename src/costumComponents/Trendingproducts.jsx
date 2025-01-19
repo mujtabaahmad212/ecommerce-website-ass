@@ -50,7 +50,7 @@ const Trendingproducts = () => {
         ))}
       </div>
 
-      <div className="flex justify-center items-center gap-4 mt-8">
+      <div className="flex justify-center items-center gap-4 mt-8 flex-wrap">
         <div className="flex justify-center items-center flex-col bg-[#DDDCDF] rounded-xl shadow-xl px-4 py-2">
           <div className="rounded-3xl w-full h-60">
             <h1 className="text-3xl font-bold">23% off in all products</h1>

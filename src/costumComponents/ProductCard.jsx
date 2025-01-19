@@ -1,7 +1,12 @@
-import React from 'react';
+
 import productImage from '../assets/images/pexels-madebymath-90946.jpg'; // Import the image
 
+
+
+
 const ProductCard = () => {
+
+  // Show the wishcard when the button is clicked
   return (
     <div className='
     
@@ -43,7 +48,16 @@ const ProductCard = () => {
     
       ' > It has many amazing features and benefits that make it a must-have item.
       </p>
+      
+      
+
+     
+
+
+      
     </div>
+
+    
   );
 };
 

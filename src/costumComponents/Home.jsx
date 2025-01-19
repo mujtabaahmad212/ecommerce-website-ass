@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from "react";
 import ProductCard from './ProductCard'; 
 import ProductList from  './imageCard';
 import Trendingproducts from './Trendingproducts';
 import Hero from './hero';
 import heroimage from "../assets/images/andrew-kliatskyi-2bfHAKhGn4g-unsplash.jpg";
 import productimage2 from "../assets/images/image 1.png"
-import OfferCards1 from  "./offerCards"
-const Home = () => {
+import OfferCards1 from  "./offerCards";
+// import Cursouel from "./Carsouel";
+ 
+
+
+const Home = () => { 
+
+ 
+
   return (
    <>
   <body className='bg-[#f2f2f2]'>
@@ -19,7 +26,10 @@ const Home = () => {
   className='flex justify-center items-center h-[60vh] mx-2 rounded-3xl shadow-lg mb-4 mt-6 '>
       
       </div>
-  
+{/*   
+  <div className="">
+  <Cursouel />
+  </div> */}
 
 
       <div className="">
@@ -51,11 +61,7 @@ const Home = () => {
      
    </div>
 
-   {/* <div className="flex justify-center   flex-row items-center gap-10 flex-wrap mb-12">
-   <ProductList  />
-    
-     
-   </div> */}
+  
     </div>
 
    
@@ -77,6 +83,9 @@ const Home = () => {
     <div className=""></div>
     <div className=""></div>
    </div>
+
+
+
 
        </body>
       </>
