@@ -26,6 +26,7 @@ function App() {
   
 
   const wishlinks = [
+    
     { title: "Wishlist", url: "/wishlist"} ,
   ]
   return (
