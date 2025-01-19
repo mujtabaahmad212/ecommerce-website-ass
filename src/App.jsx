@@ -13,6 +13,8 @@ import Contact from './costumComponents/Contact.jsx';
 import { Routes, Route } from 'react-router-dom';
 import Footer from "./costumComponents/Footer.jsx";
 import Wishlist from "./costumComponents/Wishlist.jsx"
+import { Link } from "react-router-dom";
+import Heartliked from './costumComponents/Heartliked.jsx'
 // import Carousel from "./components/ui/carousel.tsx"
 import { Button, buttonVariants } from "./components/ui/button";
 // import Cursouel from "./costumComponents/Carsouel.jsx"
@@ -21,6 +23,11 @@ import { Button, buttonVariants } from "./components/ui/button";
 
 
 function App() {
+  
+
+  const wishlinks = [
+    { title: "Wishlist", url: "/wishlist"} ,
+  ]
   return (
     <>
       <div className="bg-purple-600 p-1 font-mono text-white">
@@ -36,6 +43,7 @@ function App() {
         <FaPhoneAlt />
         0342 14aug1947
       </p>
+    <Heartliked/>
     </div>
 
     {/* Right Section: Language, Currency, Wishlist */}
@@ -65,7 +73,18 @@ function App() {
         id="wishlist"
         className="flex justify-center items-center gap-2 text-white cursor-pointer"
       >
-        <p className="font-bold font-mono">Wishlist</p>
+    
+            {wishlinks.map((item, index) => (
+              <Link
+                key={index}
+                to={item.url}
+                className=""
+              >
+                {item.title}
+              </Link>
+
+            ))}
+        
         <CiHeart className="text-lg" />
       </div>
     </div>

@@ -3,7 +3,7 @@ import React from "react";
 const Wishlist = () => {
 return (
   <>
-  <div className="">kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+  <div className="">kkkkkkkkkkkkkkkkkkkkk</div>
   </>
 )
 };

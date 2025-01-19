@@ -179,7 +179,7 @@ const navlinks = [
  
   { title: "Shop", url: "/Shop" },
   { title: "Contact", url: "/Contact" },
-  { title: "wishlist", url: "/wishlist" }, // Added Cart link
+  // { title: "wishlist", url: "/wishlist" }, // Added Cart link
 ];
 
 const Navbar = () => {
@@ -244,7 +244,7 @@ const Navbar = () => {
               >
                 {item.title}
               </Link>
-              
+
             ))}
           </nav>
         </div>

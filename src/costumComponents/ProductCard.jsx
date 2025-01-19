@@ -25,7 +25,7 @@ const ProductCard = () => {
     border
     border-gray-500 hover:translate-x-3 hover:translate-y-3' > 
       {/* Image */}
-      <img src={productImage} alt="Product" 
+    <div className="">  <img src={productImage} alt="Product" 
       className='
       rounded-t-3xl  
       transition 
@@ -34,7 +34,7 @@ const ProductCard = () => {
       hover:-translate-y-2 
       mb-3 
       hover:border
-      hover:border-black '  /> 
+      hover:border-black '  /> </div>
 
       <h1 className='
       font-bold

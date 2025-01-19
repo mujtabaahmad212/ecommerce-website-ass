@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import ProductCard from './ProductCard'; 
-import ProductList from  './imageCard';
+import React from "react";
+import ProductCard from "./ProductCard";
+import ProductList from './imageCard';
 import Trendingproducts from './Trendingproducts';
 import Hero from './hero';
 import heroimage from "../assets/images/andrew-kliatskyi-2bfHAKhGn4g-unsplash.jpg";
@@ -26,10 +26,10 @@ const Home = () => {
   className='flex justify-center items-center h-[60vh] mx-2 rounded-3xl shadow-lg mb-4 mt-6 '>
       
       </div>
-{/*   
+  
   <div className="">
-  <Cursouel />
-  </div> */}
+  {/* <Cursouel /> */}
+  </div>
 
 
       <div className="">
