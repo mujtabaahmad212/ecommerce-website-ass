@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard'; 
 import ProductList from  './imageCard';
-
+import Trendingproducts from './Trendingproducts';
 import Hero from './hero';
 import heroimage from "../assets/images/andrew-kliatskyi-2bfHAKhGn4g-unsplash.jpg";
 import productimage2 from "../assets/images/image 1.png"
@@ -62,21 +62,16 @@ const Home = () => {
 <h1 className='text-center text-2xl first-letter:text-red-600'>What Shopex Offer!</h1>
   <div className=" flex justify-center items-center gap-12 flex-wrap my-12   md:items-start mx-6">
     <OfferCards1 />
-    <OfferCards1 />
-    <OfferCards1 />
-    <OfferCards1 />
+    
     
    </div>
 
     <Hero />
 
-    <div className=" flex justify-around items-center gap-4 flex-wrap my-12   md:items-start mx-6">
-    <ProductCard />
-    <ProductCard />
-    <ProductCard />
-    <ProductCard />
-    
-    </div>
+    <h1 className="text-3xl font-bold capitalize first-letter:text-red-600 text-center my-7">Trending Products</h1>
+  <div className=" flex gap-4 justify-center items-center flex-wrap   md:items-start">
+  <Trendingproducts/>
+  </div>
 
    <div className=" flex justify-around ">
     <div className=""></div>

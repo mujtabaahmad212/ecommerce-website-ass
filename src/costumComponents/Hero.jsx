@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import heroimage1 from "../assets/images/heroimg1.png"
+import heroimage1 from "../assets/images/Home-Stylish-Club-Sofa-Chair-Pleated-Sofa-Armchair-with-Golden-Legs 1.png"
 import herobgimg from "../assets/images/blob-haikei.png"
 
 
 const Hero = () => {
-
-
- 
-
-
 
   return (
     <>
@@ -51,7 +46,7 @@ const Hero = () => {
   
 </div>
 
-<h1 className="text-3xl font-bold capitalize first-letter:text-red-600 text-center my-7">Trending Products</h1>
+
 
     </>
   )

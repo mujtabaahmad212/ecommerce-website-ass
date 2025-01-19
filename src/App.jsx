@@ -11,7 +11,7 @@ import Blog from './costumComponents/Blog.jsx';
 import Shop from './costumComponents/Shop.jsx';
 import Contact from './costumComponents/Contact.jsx';
 import { Routes, Route } from 'react-router-dom';
-
+import Footer from "./costumComponents/Footer.jsx"
 
 function App() {
   return (
@@ -57,6 +57,9 @@ function App() {
        
         
       </Routes>
+
+      {/* footer */}
+      <Footer />
     </>
   )
 }
