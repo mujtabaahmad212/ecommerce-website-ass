@@ -1,253 +1,174 @@
-// import React, { useState } from 'react';
-// import { CiSearch } from "react-icons/ci";
-// import { Link } from "react-router-dom";
-// import { RxHamburgerMenu } from "react-icons/rx";
-
-
-// const navlinks = [
-//   { title: "Home", url: "/" },
-//   { title: "Pages", url: "/Pages" },
-//   { title: "Product", url: "/Product" },
-//   { title: "Blog", url: "/Blog" },
-//   { title: "Shop", url: "/Shop" },
-//   { title: "Contact", url: "/Contact" },
-//   { title: "Cart", url: "/Cart" }, // Added Cart link
-
-  
-// ];
-
-// const Navbar = () => {
-  
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsOpen(!isOpen);
-
-//   };
-
-
-
-
-//   return (
-//     <>
-
-// <body className=' relative '>
-    
-//       <div className="flex justify-between items-center h-16 backdrop-blur-md absolutly top-0 z-50 bg-[#000000] font-bold text-[#FEF9E1] px-6   w-full">
-//         <div className="flex justify-center items-center h-10">
-//           <h1 className="text-2xl first-letter:text-3xl">N.Ahmad</h1>
-//         </div>
-
-//         <div className="flex justify-center items-center h-10">
-//           <input type="search" className="rounded-tl-sm rounded-bl-sm" placeholder="Search..." />
-//           <CiSearch className="size-5 h-6 cursor-pointer bg-[#000001] w-7 rounded-tr-sm rounded-br-sm" 
-    
-//           />
-//         </div>
-        
-          
-//           {/* Navigation */}
-//           <nav id="navbar"  className={`flex-col md:flex-row md:flex ${isOpen ? 'flex ' : 'hidden'} :bg-red-600  `}>
-            
-//             {navlinks.map((item, index) => {
-//               return (
-//                 <a
-//                   key={index}
-//                   id="navitem"
-//                   className="px-2 py-1 rounded-lg transition-all flex justify-center  items-center h-10  after:w-[0px] 
-//                   after:rounded-lg after:hover:w-[50px] after:h-1 after:absolute  after:-bottom-[-10px]  after:bg-[#fafafa]  
-
-//                   after:transition-all after:duration-300  "
-//                 >
-//                   <Link to={item.url}>{item.title}</Link>
-//                 </a>
-                
-//               );
-              
-//             })}
-//           </nav>
-//           <div className="flex justify-center items-center gap-2 h-10">
-//           {/* Hamburger Menu */}
-//           <div className="md:hidden" onClick={toggleMenu}>
-//             <RxHamburgerMenu className="text-3xl cursor-pointer" />
-//           </div>
-          
-//         </div>
-        
-        
-//       </div>
-      
-//       </body>
-//     </>
-//   );
-// };
-
-
-// export default Navbar;
-
-
-
-// chatgpt code 
-
-
-
-
-// import React, { useState } from "react";
-// import { CiSearch } from "react-icons/ci";
-// import { Link } from "react-router-dom";
-// import { RxHamburgerMenu } from "react-icons/rx";
-
-// const navlinks = [
-//   { title: "Home", url: "/" },
-//   { title: "Pages", url: "/Pages" },
-//   { title: "Product", url: "/Product" },
-//   { title: "Blog", url: "/Blog" },
-//   { title: "Shop", url: "/Shop" },
-//   { title: "Contact", url: "/Contact" },
-//   { title: "Cart", url: "/Cart" }, // Added Cart link
-// ];
-
-// const Navbar = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   return (
-//     <>
-//       <div className="relative">
-//         <div className="flex justify-between items-center h-16 backdrop-blur-md  bg-[#000000] font-bold text-[#FEF9E1] px-6 w-full">
-//           {/* Brand Name */}
-//           <div className="flex justify-center items-center h-10">
-//             <h1 className="text-2xl first-letter:text-3xl">N.Ahmad</h1>
-//           </div>
-
-//           {/* Search Box */}
-//           <div className="hidden md:flex justify-center items-center h-10">
-//             <input
-//               type="search"
-//               className="rounded-tl-sm rounded-bl-sm px-2 py-1 text-black"
-//               placeholder="Search..."
-//             />
-//             <CiSearch className="size-5 h-6 cursor-pointer bg-[#000001] w-7 rounded-tr-sm rounded-br-sm" />
-//           </div>
-
-//           {/* Navigation */}
-//           <nav
-//             id="navbar"
-//             className={`absolute md:static md:flex md:flex-row bg-[#000000] md:bg-transparent md:w-auto flex-col gap-4 md:gap-6 ${
-//               isOpen ? "flex top-16 w-full left-0 p-4 z-40" : "hidden"
-//             }`}
-//           >
-//             {navlinks.map((item, index) => (
-//               <Link
-//                 key={index}
-//                 to={item.url}
-//                 className="px-2 py-1 text-center md:text-left rounded-lg transition-all  hover:text-[#fafafa] md:after:content-[''] md:after:block md:after:h-1 md:after:bg-[#fafafa] md:after:scale-x-0 md:after:transition-transform md:after:duration-300 md:hover:after:scale-x-100"
-//               >
-//                 {item.title}
-//               </Link>
-//             ))}
-//           </nav>
-
-//           {/* Hamburger Menu */}
-//           <div className="md:hidden" onClick={toggleMenu}>
-//             <RxHamburgerMenu className="text-3xl cursor-pointer" />
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Navbar;
-
-// gpt
-
-
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import { IoMdClose } from "react-icons/io";
+import { FiShoppingCart, FiHeart, FiUser } from "react-icons/fi";
+import { useCart } from "../context/CartContext";
 
 const navlinks = [
   { title: "Home", url: "/" },
-  
-  { title: "Product", url: "/Product" },
- 
   { title: "Shop", url: "/Shop" },
+  { title: "Product", url: "/Product" },
+  { title: "Blog", url: "/Blog" },
+  { title: "About", url: "/Pages" },
   { title: "Contact", url: "/Contact" },
-  // { title: "wishlist", url: "/wishlist" }, // Added Cart link
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const { cartCount } = useCart();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
 
   return (
     <>
-      <div className="relative">
-        {/* Navbar */}
-        <div className="flex justify-between items-center h-16 backdrop-blur-md bg-[#000000] font-bold text-[#FEF9E1] px-6 w-full">
-          {/* Brand Name */}
-          <div className="flex justify-center items-center h-10 flex-shrink-0">
-            <h1 className="text-2xl first-letter:text-3xl">N.Ahmad</h1>
+      <nav className={`navbar animate-fadeInDown ${isScrolled ? 'scrolled' : ''}`}>
+        {/* Top Bar */}
+        <div className="bg-gradient-to-r from-green-600 to-emerald-500 text-white py-2 px-4">
+          <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-sm">
+            <div className="flex items-center gap-4">
+              <span>📧 support@nahmad.com</span>
+              <span className="hidden sm:inline">📞 +92 342 1234567</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span>🚚 Free Shipping on Orders $50+</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Navbar */}
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <Link to="/" className="text-2xl font-bold gradient-text hover-scale">
+            N.Ahmad
+          </Link>
+
+          {/* Search Bar */}
+          <div className="hidden lg:flex flex-1 max-w-md mx-8">
+            <div className="relative w-full">
+              <input
+                type="search"
+                placeholder="Search products..."
+                className="w-full px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-green-400 focus:bg-white/20 transition-all"
+              />
+              <CiSearch className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-white/70" />
+            </div>
           </div>
 
-          {/* Search Box */}
-          <div className="flex justify-center items-center h-10 flex-grow max-w-md mx-4">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-6">
+            {navlinks.map((item, index) => (
+              <Link
+                key={index}
+                to={item.url}
+                className={`nav-link ${location.pathname === item.url ? 'active' : ''}`}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+
+          {/* Icons */}
+          <div className="flex items-center gap-4 ml-4">
+            <Link to="/wishlist" className="text-white hover:text-green-400 transition-colors hover-scale">
+              <FiHeart className="text-xl" />
+            </Link>
+            <Link to="/cart" className="relative text-white hover:text-green-400 transition-colors hover-scale">
+              <FiShoppingCart className="text-xl" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-green-500 text-white text-xs rounded-full flex items-center justify-center animate-scaleIn">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+            <Link to="/login" className="hidden sm:block text-white hover:text-green-400 transition-colors hover-scale">
+              <FiUser className="text-xl" />
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden text-white text-2xl hover-scale"
+            >
+              {isOpen ? <IoMdClose /> : <RxHamburgerMenu />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Search */}
+        <div className="lg:hidden px-4 pb-4">
+          <div className="relative">
             <input
               type="search"
-              className="w-full rounded-tl-sm rounded-bl-sm px-2 py-1 text-black"
               placeholder="Search..."
+              className="w-full px-5 py-2 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-green-400"
             />
-            <CiSearch className="size-5 h-6 cursor-pointer bg-[#000001] w-7 rounded-tr-sm rounded-br-sm" />
+            <CiSearch className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-white/70" />
           </div>
+        </div>
+      </nav>
 
-          {/* Full Navigation for Medium Screens and Larger */}
-          <nav className="hidden md:flex gap-6 justify-end items-center flex-shrink-0">
-            {navlinks.map((item, index) => (
-              <Link
-                key={index}
-                to={item.url}
-                className="px-2 py-1 text-[#ffffff] rounded-lg transition-all hover:text-[#fafafa] after:content-[''] after:block after:h-1 after:bg-[#fafafa] after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
-              >
-                {item.title}
-              </Link>
-            ))}
-          </nav>
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`mobile-overlay ${isOpen ? 'open' : ''}`}
+        onClick={() => setIsOpen(false)}
+      />
 
-          {/* Hamburger Menu */}
-          <div className="md:hidden" onClick={toggleMenu}>
-            <RxHamburgerMenu className="text-3xl cursor-pointer" />
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
+        <div className="p-6 border-b border-white/10">
+          <div className="flex justify-between items-center">
+            <span className="text-2xl font-bold gradient-text">Menu</span>
+            <button onClick={() => setIsOpen(false)} className="text-white text-2xl hover-scale">
+              <IoMdClose />
+            </button>
           </div>
         </div>
 
-        {/* Navigation for Small Screens */}
-        <div
-          className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-          } bg-[#000000] md:hidden`}
-        >
-          <nav className="flex flex-col gap-4 p-4">
-            {navlinks.map((item, index) => (
-              <Link
-                key={index}
-                to={item.url}
-                className="px-2 py-2 text-center text-[#FEF9E1] bg-[#111111] hover:bg-[#222222] rounded-lg transition-all"
-              >
-                {item.title}
-              </Link>
+        <nav className="p-6 flex flex-col gap-2">
+          {navlinks.map((item, index) => (
+            <Link
+              key={index}
+              to={item.url}
+              onClick={() => setIsOpen(false)}
+              className={`block px-4 py-3 rounded-xl text-white text-lg transition-all ${location.pathname === item.url
+                  ? 'gradient-bg'
+                  : 'hover:bg-white/10'
+                }`}
+            >
+              {item.title}
+            </Link>
+          ))}
 
-            ))}
-          </nav>
-        </div>
+          <div className="mt-6 pt-6 border-t border-white/10">
+            <Link
+              to="/login"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-3 px-4 py-3 text-white hover:bg-white/10 rounded-xl transition-all"
+            >
+              <FiUser className="text-xl" />
+              <span>Login / Register</span>
+            </Link>
+          </div>
+        </nav>
       </div>
     </>
   );

@@ -1,100 +1,97 @@
-import React from "react";
-import productImage1 from "../assets/images/image 1166.png"; 
-import productImage2 from "../assets/images/image 1171.png"; 
-import productImage3 from "../assets/images/image 31.png"; 
-import productImage4 from "../assets/images/image 1162.png"; 
-import productImage5 from "../assets/images/image 1161.png"; 
-import productImage6 from "../assets/images/image 19.png";
-import productImage7 from "../assets/images/image 28.png";
-import productImage8 from "../assets/images/image 30.png";
-
-const trendingproduct = [
-  {
-    id: 1,
-    name: 'Product 1',
-    image: productImage1,
-    description: 'This is the description for Product 1.',
-    price: 19.71,
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    image: productImage2,
-    description: 'This is the description for Product 2.This is the description for Product 2.',
-    price: 21.59,
-  },
-  {
-    id: 3,
-    name: 'Product 3',
-    image: productImage3,
-    description: 'This is the description for Product 2.This is the description for Product 2.',
-    price: 29.99,
-  },
-];
+import { useState } from 'react';
+import { FiHeart, FiShoppingCart, FiCheck } from 'react-icons/fi';
+import { FaStar } from 'react-icons/fa';
+import productImage from '../assets/images/pexels-madebymath-90946.jpg';
+import { useCart } from '../context/CartContext';
 
 const Trendingproducts = () => {
+  const { addToCart } = useCart();
+  const [addedItems, setAddedItems] = useState({});
+
+  const products = [
+    { name: "Designer Chair", price: 149.99, oldPrice: 199.99, rating: 4.8, badge: "Hot" },
+    { name: "Modern Lamp", price: 79.99, rating: 4.5, badge: "New" },
+    { name: "Coffee Table", price: 249.99, oldPrice: 299.99, rating: 4.7 },
+    { name: "Wall Art", price: 59.99, rating: 4.3, badge: "Sale" },
+  ];
+
+  const handleAddToCart = (product) => {
+    addToCart({ name: product.name, price: product.price, image: productImage });
+    setAddedItems(prev => ({ ...prev, [product.name]: true }));
+    setTimeout(() => {
+      setAddedItems(prev => ({ ...prev, [product.name]: false }));
+    }, 2000);
+  };
+
   return (
     <>
-      <div className="flex justify-center items-center gap-4 flex-wrap">
-        {trendingproduct.map((product) => (
-          <div key={product.id} className="h-96 flex-col w-96 text-center px-4 bg-[#f5f5f5] rounded-3xl shadow-xl flex justify-around items-center">
-            <div className="w-full flex justify-center items-center bg-slate-300 rounded-lg">
-              <img src={product.image} alt="Product" className='w-56 h-56 hover:-translate-y-5 transition-all duration-500' />
-            </div>
-            <div className="flex flex-col gap-2 w-full text-justify h-32 px-8"> 
-              <h1 className="text-2xl font-bold">{product.name}</h1>
-              <p>{product.description}</p>
-              <p>${product.price}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      {products.map((product, index) => (
+        <div
+          key={index}
+          className="stagger-item card w-72 group"
+        >
+          {/* Image */}
+          <div className="relative overflow-hidden">
+            {product.badge && (
+              <span className={`badge ${product.badge === 'Sale' || product.badge === 'Hot' ? 'badge-sale' : 'badge-new'} absolute top-4 left-4 z-10`}>
+                {product.badge}
+              </span>
+            )}
 
-      <div className="flex justify-center items-center gap-4 mt-8 flex-wrap">
-        <div className="flex justify-center items-center flex-col bg-[#DDDCDF] rounded-xl shadow-xl px-4 py-2">
-          <div className="rounded-3xl w-full h-60">
-            <h1 className="text-3xl font-bold">23% off in all products</h1>
-            <button className="mt-4 px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-400">Shop Now</button>
-            <div className="h-32 relative w-full">
-              <img src={productImage4} alt="chair" className="w-36 absolute h-36 right-0" />
+            <button className="absolute top-4 right-4 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:bg-green-500 hover:text-white transition-all opacity-0 group-hover:opacity-100">
+              <FiHeart />
+            </button>
+
+            <img
+              src={productImage}
+              alt={product.name}
+              className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <button
+                onClick={() => handleAddToCart(product)}
+                className={`btn-primary text-sm py-2 flex items-center gap-1 ${addedItems[product.name] ? 'bg-green-700' : ''}`}
+              >
+                {addedItems[product.name] ? (
+                  <>
+                    <FiCheck /> Added!
+                  </>
+                ) : (
+                  <>
+                    <FiShoppingCart className="inline mr-1" /> Add to Cart
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Info */}
+          <div className="p-5">
+            {/* Rating */}
+            <div className="flex items-center gap-1 mb-2">
+              {[...Array(5)].map((_, i) => (
+                <FaStar
+                  key={i}
+                  className={`text-sm ${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                />
+              ))}
+              <span className="text-sm text-gray-500 ml-1">({product.rating})</span>
+            </div>
+
+            <h3 className="font-bold text-lg mb-2 group-hover:text-green-600 transition-colors">
+              {product.name}
+            </h3>
+
+            <div className="flex items-center gap-2">
+              <span className="text-xl font-bold gradient-text">${product.price}</span>
+              {product.oldPrice && (
+                <span className="text-gray-400 line-through">${product.oldPrice}</span>
+              )}
             </div>
           </div>
         </div>
-
-        <div className="flex justify-center items-center flex-col bg-[#D5D1E7] rounded-xl shadow-xl px-4 py-2">
-          <div className="rounded-3xl w-full h-60">
-            <h1 className="text-3xl font-bold">23% off in all products</h1>
-            <button className="mt-4 px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-400">View Collection</button>
-            <div className="h-32 relative w-full">
-              <img src={productImage5} alt="chair" className="w-38 absolute h-32 right-0" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-center items-center mt-8 flex-col bg-[#EFF8E2] rounded-lg shadow-xl px-4 gap-4 py-2">
-        <div className="flex items-center gap-6">
-          <img src={productImage6} alt="" className="bg-[#CED0CE] rounded-lg" />
-          <div>
-            <h1>Executive Seat chair</h1>
-            <p>$32.00</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-6">
-          <img src={productImage7} alt="" className="bg-[#CED0CE] rounded-lg" />
-          <div>
-            <h1>Executive Seat chair</h1>
-            <p>$32.00</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-6">
-          <img src={productImage8} alt="" className="bg-[#CED0CE] rounded-lg" />
-          <div>
-            <h1>Executive Seat chair</h1>
-            <p>$32.00</p>
-          </div>
-        </div>
-      </div>
+      ))}
     </>
   );
 };

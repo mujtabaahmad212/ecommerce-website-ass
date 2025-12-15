@@ -1,41 +1,49 @@
-import React from "react";
-import { FcBusinessContact } from "react-icons/fc";
+import { FiTruck, FiDollarSign, FiHeadphones, FiShield } from 'react-icons/fi';
 
-const offercard = [
-  {
-    id: 1,
-    title: "24/7",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, cum!",
-  },
-  {
-    id: 2,
-    title: "Free Shipping",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, cum!",
-  },
-  {
-    id: 3,
-    title: "Money Back",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, cum!",
-  },
-  {
-    id: 4,
-    title: "Secure Payment",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, cum!",
-  },
-];
+const OfferCards = () => {
+  const offers = [
+    {
+      icon: <FiTruck />,
+      title: "Free Delivery",
+      description: "Free shipping on all orders over $50",
+      color: "from-green-500 to-emerald-400",
+    },
+    {
+      icon: <FiDollarSign />,
+      title: "Best Prices",
+      description: "Guaranteed lowest prices or money back",
+      color: "from-teal-500 to-cyan-400",
+    },
+    {
+      icon: <FiHeadphones />,
+      title: "24/7 Support",
+      description: "Customer support available anytime",
+      color: "from-emerald-500 to-green-400",
+    },
+    {
+      icon: <FiShield />,
+      title: "Secure Payment",
+      description: "100% secure payment processing",
+      color: "from-lime-500 to-green-400",
+    },
+  ];
 
-const OfferCards1 = () => {
   return (
     <>
-      {offercard.map((offer) => (
-        <div key={offer.id} className="w-52 flex-col h-52 text-center px-4 bg-[#F2F3F4] rounded-3xl shadow-xl flex justify-center items-center">
-          <FcBusinessContact className='w-12 h-12'/>
-          <h1>{offer.title}</h1>
-          <p>{offer.description}</p>
+      {offers.map((offer, index) => (
+        <div
+          key={index}
+          className={`stagger-item card p-8 text-center w-64 hover-lift bg-gradient-to-br ${offer.color} text-white`}
+        >
+          <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
+            {offer.icon}
+          </div>
+          <h3 className="text-xl font-bold mb-2">{offer.title}</h3>
+          <p className="text-white/80">{offer.description}</p>
         </div>
       ))}
     </>
   );
 };
 
-export default OfferCards1;
+export default OfferCards;
